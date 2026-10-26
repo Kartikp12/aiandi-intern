@@ -1,0 +1,1086 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Comment Moderator — Evaluation Report</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+         margin: 0; padding: 28px; color: #202124; background: #f5f7fa; }
+  h1 { margin-bottom: 6px; }
+  .muted { color: #626b78; }
+  .summary { display: flex; gap: 12px; flex-wrap: wrap; margin: 22px 0; }
+  .card { background: white; border: 1px solid #e1e5eb; border-radius: 10px;
+           padding: 16px 20px; min-width: 125px; }
+  .number { font-size: 25px; font-weight: 700; margin-top: 5px; }
+  .toolbar { display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0; }
+  input, select { padding: 10px; border: 1px solid #ccd2dc;
+                   border-radius: 7px; background: white; font-size: 14px; }
+  input { flex: 1; min-width: 200px; }
+  .table-wrap { overflow-x: auto; background: white; border-radius: 10px;
+                 border: 1px solid #e1e5eb; }
+  table { border-collapse: collapse; width: 100%; min-width: 850px; }
+  th, td { padding: 13px; border-bottom: 1px solid #e8ebf0;
+            text-align: left; vertical-align: top; }
+  th { background: #f9fafb; position: sticky; top: 0; }
+  .comment { max-width: 560px; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .badge { display: inline-block; padding: 5px 8px; border-radius: 6px;
+            font-size: 11px; font-weight: 700; }
+  .acceptable { background: #dcfce7; color: #166534; }
+  .toxic { background: #fee2e2; color: #991b1b; }
+  .spam { background: #fef3c7; color: #92400e; }
+  .error { color: #b91c1c; overflow-wrap: anywhere; }
+  small { color: #626b78; }
+  @media (max-width: 600px) { body { padding: 14px; } }
+</style>
+</head>
+<body>
+<h1>AI Comment Moderator</h1>
+<p class="muted">Model: clef-flash · Generated: 2026-10-27 00:08 IST</p>
+<p class="muted">AI classifications are predictions, not ground truth. Review every comment manually.</p>
+
+<div class="summary">
+  <div class="card">Total comments<div class="number">100</div></div>
+  <div class="card">Acceptable<div class="number">76</div></div>
+  <div class="card">Toxic<div class="number">10</div></div>
+  <div class="card">Spam<div class="number">14</div></div>
+  <div class="card">Errors<div class="number">0</div></div>
+</div>
+
+<div class="toolbar">
+  <input id="search" type="search" placeholder="Search comments, authors or IDs...">
+  <select id="filter">
+    <option value="all">All classifications</option>
+    <option value="acceptable">Acceptable</option>
+    <option value="toxic">Toxic</option>
+    <option value="spam">Spam</option>
+    <option value="error">Errors</option>
+  </select>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead><tr>
+<th>ID</th><th>Author / Thread</th><th>Comment</th>
+<th>Clef label</th><th>Confidence / Probabilities</th>
+</tr></thead>
+<tbody>
+        <tr data-label="acceptable">
+          <td>1</td>
+          <td>Aditya Kulkarni<br>
+              <small>Doubts</small></td>
+          <td class="comment">Ma&#x27;am, is it okay if we use Claude for the frontend and Codex for the backend logic, or should the whole artifact be built with one tool?</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 96.5%, toxic: 1.9%, spam: 1.6%">89.6%<br>
+              <small>acceptable: 96.5%, toxic: 1.9%, spam: 1.6%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>2</td>
+          <td>Sneha Iyer<br>
+              <small>Share your artifacts</small></td>
+          <td class="comment">Submitted my artifact: a timetable clash checker for our dept. Claude made the UI in like 10 mins but I spent 2 hours fixing the CSV parsing. Link is in my submission.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.3%, toxic: 0.4%, spam: 2.4%">92.0%<br>
+              <small>acceptable: 97.3%, toxic: 0.4%, spam: 2.4%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>3</td>
+          <td>AssignmentGuru_99<br>
+              <small>General</small></td>
+          <td class="comment">🔥🔥 GET YOUR ASSIGNMENTS DONE BY EXPERTS 🔥🔥 Claude/Codex/ML projects, plagiarism free, 100% marks guaranteed. WhatsApp +91 90000 12345. Special discount for CS307 students!!</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 0.8%, toxic: 0.9%, spam: 98.4%">95.2%<br>
+              <small>acceptable: 0.8%, toxic: 0.9%, spam: 98.4%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>4</td>
+          <td>Pooja Nair<br>
+              <small>Doubts</small></td>
+          <td class="comment">Does the reflection doc need to include the prompts we used? Mine is around 40 prompts, that seems like too much to paste.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.1%, toxic: 1.5%, spam: 1.4%">91.5%<br>
+              <small>acceptable: 97.1%, toxic: 1.5%, spam: 1.4%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>5</td>
+          <td>Harsh Agarwal<br>
+              <small>Share your artifacts</small></td>
+          <td class="comment">@Rohit your expense splitter is really clean. One suggestion: there&#x27;s a rounding error when splitting ₹100 three ways, it shows 33.33 x 3 = 99.99.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.6%, toxic: 0.6%, spam: 1.8%">93.0%<br>
+              <small>acceptable: 97.6%, toxic: 0.6%, spam: 1.8%</small></td>
+        </tr>
+        
+        <tr data-label="toxic">
+          <td>6</td>
+          <td>Vikram Singh<br>
+              <small>Share your artifacts</small></td>
+          <td class="comment">Rohit&#x27;s project is copy-paste from GitHub, everyone knows. Shameless guy, and sir still gives him marks. Pathetic.</td>
+          <td><span class="badge toxic">TOXIC</span></td>
+          <td title="acceptable: 2.7%, toxic: 93.9%, spam: 3.4%">82.5%<br>
+              <small>acceptable: 2.7%, toxic: 93.9%, spam: 3.4%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>7</td>
+          <td>Mohd. Faizan<br>
+              <small>Doubts</small></td>
+          <td class="comment">Bhai kisi ko Codex ka access mila? My college email isn&#x27;t working for the student plan.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 94.3%, toxic: 2.9%, spam: 2.8%">83.8%<br>
+              <small>acceptable: 94.3%, toxic: 2.9%, spam: 2.8%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>8</td>
+          <td>Shreya Patil<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Ma&#x27;am, is a deadline extension possible? Our hostel wifi was down from Thursday night till Saturday, the warden can confirm.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 95.0%, toxic: 2.7%, spam: 2.3%">85.5%<br>
+              <small>acceptable: 95.0%, toxic: 2.7%, spam: 2.3%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>9</td>
+          <td>Vivek Menon<br>
+              <small>Doubts</small></td>
+          <td class="comment">I found that Claude kept adding features I didn&#x27;t ask for. Telling it &quot;do only X, nothing else&quot; at the start helped a lot.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.7%, toxic: 0.6%, spam: 0.7%">96.2%<br>
+              <small>acceptable: 98.7%, toxic: 0.6%, spam: 0.7%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>10</td>
+          <td>Free AI Deals<br>
+              <small>General</small></td>
+          <td class="comment">Join our Telegram group for FREE Claude Pro &amp; ChatGPT Plus accounts 🤑 only ₹199 lifetime. t.me/aitoolsdeal_india (limited slots)</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 0.7%, toxic: 0.8%, spam: 98.5%">95.5%<br>
+              <small>acceptable: 0.7%, toxic: 0.8%, spam: 98.5%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>11</td>
+          <td>Karthik Reddy<br>
+              <small>Doubts</small></td>
+          <td class="comment">Can we deploy on Vercel or does it have to run locally? Mine needs an API key and I don&#x27;t want to expose it publicly.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 96.9%, toxic: 0.9%, spam: 2.2%">90.8%<br>
+              <small>acceptable: 96.9%, toxic: 0.9%, spam: 2.2%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>12</td>
+          <td>Ananya Joshi<br>
+              <small>Doubts</small></td>
+          <td class="comment">Good point Sneha made in the lab: if the artifact stores data in localStorage, mention it in the reflection, since the data stays only in your browser.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.2%, toxic: 1.4%, spam: 1.4%">91.8%<br>
+              <small>acceptable: 97.2%, toxic: 1.4%, spam: 1.4%</small></td>
+        </tr>
+        
+        <tr data-label="toxic">
+          <td>13</td>
+          <td>Saurabh Yadav<br>
+              <small>Doubts</small></td>
+          <td class="comment">Seriously who asks these dumb questions? Read the assignment PDF before posting, idiots. Wasting everyone&#x27;s time.</td>
+          <td><span class="badge toxic">TOXIC</span></td>
+          <td title="acceptable: 2.6%, toxic: 94.3%, spam: 3.1%">83.6%<br>
+              <small>acceptable: 2.6%, toxic: 94.3%, spam: 3.1%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>14</td>
+          <td>Nikhil Bansal<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Honestly I think this assignment is too easy for 15 marks, the AI does 80% of the work. Grading should focus more on the reflection part.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.0%, toxic: 1.0%, spam: 1.0%">94.0%<br>
+              <small>acceptable: 98.0%, toxic: 1.0%, spam: 1.0%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>15</td>
+          <td>Ankit Sharma<br>
+              <small>Share your artifacts</small></td>
+          <td class="comment">My quiz app for GATE prep is up. Feedback welcome, especially on the scoring logic — not sure the negative marking works right.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 93.2%, toxic: 1.5%, spam: 5.3%">80.8%<br>
+              <small>acceptable: 93.2%, toxic: 1.5%, spam: 5.3%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>16</td>
+          <td>Meera Krishnan<br>
+              <small>Share your artifacts</small></td>
+          <td class="comment">Tried it Ankit, the negative marking subtracts 1/3 even for unattempted questions. Check the condition where you compute the score.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 95.2%, toxic: 2.4%, spam: 2.3%">86.3%<br>
+              <small>acceptable: 95.2%, toxic: 2.4%, spam: 2.3%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>17</td>
+          <td>Ritu Verma<br>
+              <small>General</small></td>
+          <td class="comment">Earn ₹5000 daily from home using AI tools!! No investment. Students also eligible. DM me or visit earnwithai-india.in</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 0.9%, toxic: 0.9%, spam: 98.2%">94.8%<br>
+              <small>acceptable: 0.9%, toxic: 0.9%, spam: 98.2%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>18</td>
+          <td>Tanvi Gupta<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Sir, the rubric says &quot;originality&quot; — does a to-do app count as original if we add a feature like voice input?</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 96.3%, toxic: 1.8%, spam: 1.8%">89.3%<br>
+              <small>acceptable: 96.3%, toxic: 1.8%, spam: 1.8%</small></td>
+        </tr>
+        
+        <tr data-label="toxic">
+          <td>19</td>
+          <td>Rahul Chauhan<br>
+              <small>Share your artifacts</small></td>
+          <td class="comment">Bro your app looks like it was made by a 5th class kid lol. Delete it and save us the embarrassment 🤡</td>
+          <td><span class="badge toxic">TOXIC</span></td>
+          <td title="acceptable: 10.0%, toxic: 81.2%, spam: 8.8%">51.6%<br>
+              <small>acceptable: 10.0%, toxic: 81.2%, spam: 8.8%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>20</td>
+          <td>Ishita Banerjee<br>
+              <small>General</small></td>
+          <td class="comment">Thank you ma&#x27;am for the extra session on prompting yesterday. The bit about giving examples of the output format was super useful.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 99.0%, toxic: 0.4%, spam: 0.7%">96.9%<br>
+              <small>acceptable: 99.0%, toxic: 0.4%, spam: 0.7%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>21</td>
+          <td>Siddharth Rao<br>
+              <small>Doubts</small></td>
+          <td class="comment">Codex wrote my tests but half of them were testing the wrong thing. Lesson learned: read the generated tests, don&#x27;t just see green ✅ and move on.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.1%, toxic: 1.3%, spam: 1.6%">91.5%<br>
+              <small>acceptable: 97.1%, toxic: 1.3%, spam: 1.6%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>22</td>
+          <td>Aman Tiwari<br>
+              <small>Doubts</small></td>
+          <td class="comment">Is anyone else getting &quot;rate limit exceeded&quot; on the free tier? It&#x27;s been blocking me since afternoon.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 95.1%, toxic: 1.8%, spam: 3.1%">85.7%<br>
+              <small>acceptable: 95.1%, toxic: 1.8%, spam: 3.1%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>23</td>
+          <td>Pooja Nair<br>
+              <small>Doubts</small></td>
+          <td class="comment">Yes same, try after midnight, it reset for me around 12:30.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 96.9%, toxic: 0.6%, spam: 2.5%">90.8%<br>
+              <small>acceptable: 96.9%, toxic: 0.6%, spam: 2.5%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>24</td>
+          <td>Raju Tech<br>
+              <small>General</small></td>
+          <td class="comment">Subscribe to my YouTube channel &quot;TechWithRaju&quot; for the full solution of CS307 assignment 3 step by step!! Link in bio. Like share subscribe 🙏🙏</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 2.2%, toxic: 1.1%, spam: 96.6%">90.1%<br>
+              <small>acceptable: 2.2%, toxic: 1.1%, spam: 96.6%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>25</td>
+          <td>Kavya Pillai<br>
+              <small>Share your artifacts</small></td>
+          <td class="comment">Our group made a canteen menu voting app. Problem: anyone can vote 100 times by refreshing. Any simple way to stop this without a login?</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.2%, toxic: 0.6%, spam: 1.2%">94.7%<br>
+              <small>acceptable: 98.2%, toxic: 0.6%, spam: 1.2%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>26</td>
+          <td>Harsh Agarwal<br>
+              <small>Share your artifacts</small></td>
+          <td class="comment">Use a localStorage flag for basic prevention, it&#x27;s not secure but for a class demo it&#x27;s fine. Or ask for roll number and check duplicates.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 96.4%, toxic: 1.7%, spam: 1.9%">89.5%<br>
+              <small>acceptable: 96.4%, toxic: 1.7%, spam: 1.9%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>27</td>
+          <td>Deepak Mishra<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Girls in this class only get good marks because sir is soft on them. Ishita&#x27;s project is average at best.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 96.6%, toxic: 2.8%, spam: 0.6%">90.0%<br>
+              <small>acceptable: 96.6%, toxic: 2.8%, spam: 0.6%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>28</td>
+          <td>Omkar Jadhav<br>
+              <small>Doubts</small></td>
+          <td class="comment">Sharing a tip: ask Claude to explain the code it wrote line by line before you submit. Viva mein pakde jaoge otherwise 😅</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 95.8%, toxic: 0.7%, spam: 3.5%">87.7%<br>
+              <small>acceptable: 95.8%, toxic: 0.7%, spam: 3.5%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>29</td>
+          <td>Prateek Saxena<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Is the viva individual or group-wise? Some of us did most of the work and others just watched.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.3%, toxic: 1.4%, spam: 1.3%">92.0%<br>
+              <small>acceptable: 97.3%, toxic: 1.4%, spam: 1.3%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>30</td>
+          <td>Ritika Sen<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">^ this. In my group one member didn&#x27;t even open the repo. How do we report this without drama?</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.1%, toxic: 1.1%, spam: 0.9%">94.3%<br>
+              <small>acceptable: 98.1%, toxic: 1.1%, spam: 0.9%</small></td>
+        </tr>
+        
+        <tr data-label="toxic">
+          <td>31</td>
+          <td>Rahul Chauhan<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">@Karan we all know you&#x27;re the one who didn&#x27;t open the repo. Useless fellow, always free-riding. Get lost.</td>
+          <td><span class="badge toxic">TOXIC</span></td>
+          <td title="acceptable: 1.7%, toxic: 95.9%, spam: 2.4%">88.1%<br>
+              <small>acceptable: 1.7%, toxic: 95.9%, spam: 2.4%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>32</td>
+          <td>Aditya Kulkarni<br>
+              <small>Doubts</small></td>
+          <td class="comment">Can we use Gemini or other models, or strictly Claude/Codex? The assignment title says Claude/Codex but the PDF says &quot;any AI coding assistant&quot;.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.4%, toxic: 1.3%, spam: 1.2%">92.4%<br>
+              <small>acceptable: 97.4%, toxic: 1.3%, spam: 1.2%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>33</td>
+          <td>exam_updates_2026<br>
+              <small>General</small></td>
+          <td class="comment">URGENT: CS307 end-sem question paper leaked!! Get it before it&#x27;s removed. ₹499 only. Pay on UPI 9000012345@upi and send screenshot.</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 4.4%, toxic: 3.7%, spam: 92.0%">77.4%<br>
+              <small>acceptable: 4.4%, toxic: 3.7%, spam: 92.0%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>34</td>
+          <td>Shreya Patil<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Sir, the submission link on Moodle is showing &quot;closed&quot; even though the deadline is tonight 11:59 PM.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 96.4%, toxic: 2.0%, spam: 1.7%">89.3%<br>
+              <small>acceptable: 96.4%, toxic: 2.0%, spam: 1.7%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>35</td>
+          <td>Rakesh M (TA)<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">It&#x27;s open now, please refresh. It was a timezone setting issue on the course page.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.6%, toxic: 0.4%, spam: 1.0%">96.0%<br>
+              <small>acceptable: 98.6%, toxic: 0.4%, spam: 1.0%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>36</td>
+          <td>Divya Hegde<br>
+              <small>Share your artifacts</small></td>
+          <td class="comment">My artifact helps my mom track her tailoring orders. She actually uses it now! Never thought an assignment would be useful at home.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 95.4%, toxic: 0.4%, spam: 4.2%">86.7%<br>
+              <small>acceptable: 95.4%, toxic: 0.4%, spam: 4.2%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>37</td>
+          <td>Ananya Joshi<br>
+              <small>Share your artifacts</small></td>
+          <td class="comment">That&#x27;s amazing Divya 👏 Maybe add a WhatsApp reminder for due dates? Could be a nice extension.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.4%, toxic: 0.4%, spam: 2.2%">92.2%<br>
+              <small>acceptable: 97.4%, toxic: 0.4%, spam: 2.2%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>38</td>
+          <td>Kunal Bhatia<br>
+              <small>Doubts</small></td>
+          <td class="comment">Doubt: if Claude generates code that&#x27;s similar to some open-source project, is that plagiarism? How do we cite it?</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 95.3%, toxic: 2.3%, spam: 2.4%">86.6%<br>
+              <small>acceptable: 95.3%, toxic: 2.3%, spam: 2.4%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>39</td>
+          <td>Dr. Lakshmi Narayanan<br>
+              <small>Doubts</small></td>
+          <td class="comment">Good question. Mention the tool and your prompts in the reflection, and if you knowingly used a library or snippet, cite it like any other source.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.9%, toxic: 0.4%, spam: 0.7%">96.7%<br>
+              <small>acceptable: 98.9%, toxic: 0.4%, spam: 0.7%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>40</td>
+          <td>Shree Computers<br>
+              <small>General</small></td>
+          <td class="comment">Cheap laptops for engineering students!! i5 12th gen just ₹18,999. Limited stock. Call Shree Computers, Shivaji Nagar 📞 90000 54321</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 1.6%, toxic: 1.2%, spam: 97.3%">92.0%<br>
+              <small>acceptable: 1.6%, toxic: 1.2%, spam: 97.3%</small></td>
+        </tr>
+        
+        <tr data-label="toxic">
+          <td>41</td>
+          <td>Vikram Singh<br>
+              <small>Share your artifacts</small></td>
+          <td class="comment">This forum is full of sir&#x27;s chamchas. Everybody praising every useless app. Fake people.</td>
+          <td><span class="badge toxic">TOXIC</span></td>
+          <td title="acceptable: 3.6%, toxic: 91.8%, spam: 4.6%">77.0%<br>
+              <small>acceptable: 3.6%, toxic: 91.8%, spam: 4.6%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>42</td>
+          <td>Kunal Bhatia<br>
+              <small>General</small></td>
+          <td class="comment">I&#x27;m not sure using AI for assignments is actually teaching us anything. I learned more debugging the output than from the tool itself.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.0%, toxic: 1.0%, spam: 0.9%">94.2%<br>
+              <small>acceptable: 98.0%, toxic: 1.0%, spam: 0.9%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>43</td>
+          <td>Siddharth Rao<br>
+              <small>General</small></td>
+          <td class="comment">Disagree a bit — knowing what to ask and how to check the output is itself a skill. Industry is going this way anyway.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.6%, toxic: 1.3%, spam: 1.1%">93.0%<br>
+              <small>acceptable: 97.6%, toxic: 1.3%, spam: 1.1%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>44</td>
+          <td>Vivek Menon<br>
+              <small>Doubts</small></td>
+          <td class="comment">My Codex output used a deprecated pandas function (append). Fixed it with concat. Posting in case anyone else hits the same error.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 99.2%, toxic: 0.2%, spam: 0.5%">97.7%<br>
+              <small>acceptable: 99.2%, toxic: 0.2%, spam: 0.5%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>45</td>
+          <td>Tanvi Gupta<br>
+              <small>Doubts</small></td>
+          <td class="comment">Thanks Vivek, was stuck on exactly this for an hour 🙏</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.0%, toxic: 1.2%, spam: 1.8%">91.1%<br>
+              <small>acceptable: 97.0%, toxic: 1.2%, spam: 1.8%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>46</td>
+          <td>CryptoKing Official<br>
+              <small>General</small></td>
+          <td class="comment">💰 Crypto signals group 💰 90% accuracy, students making ₹50k/month. Join fast before closing: bit.ly/crypto-signal-vip</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 0.5%, toxic: 0.7%, spam: 98.7%">96.2%<br>
+              <small>acceptable: 0.5%, toxic: 0.7%, spam: 98.7%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>47</td>
+          <td>Mohd. Faizan<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Ma&#x27;am, will the marks be uploaded before the Diwali break?</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 96.1%, toxic: 2.1%, spam: 1.8%">88.5%<br>
+              <small>acceptable: 96.1%, toxic: 2.1%, spam: 1.8%</small></td>
+        </tr>
+        
+        <tr data-label="toxic">
+          <td>48</td>
+          <td>Deepak Mishra<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Whoever gave my project 2/10 in peer review, you&#x27;re a jealous loser. I know who you are and I&#x27;ll see you outside the lab.</td>
+          <td><span class="badge toxic">TOXIC</span></td>
+          <td title="acceptable: 1.7%, toxic: 95.9%, spam: 2.4%">88.0%<br>
+              <small>acceptable: 1.7%, toxic: 95.9%, spam: 2.4%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>49</td>
+          <td>Kavya Pillai<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Peer review feedback was helpful, thanks to whoever pointed out the mobile layout breaking. Fixed it.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 99.1%, toxic: 0.4%, spam: 0.5%">97.4%<br>
+              <small>acceptable: 99.1%, toxic: 0.4%, spam: 0.5%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>50</td>
+          <td>Riya Thomas<br>
+              <small>Doubts</small></td>
+          <td class="comment">Can someone explain what &quot;artifact&quot; means here? Is it just the code or a deployed thing people can open?</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 92.6%, toxic: 4.0%, spam: 3.4%">78.9%<br>
+              <small>acceptable: 92.6%, toxic: 4.0%, spam: 3.4%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>51</td>
+          <td>Rakesh M (TA)<br>
+              <small>Doubts</small></td>
+          <td class="comment">From the PDF: artifact = a working, shareable thing (web page, tool, small app) + a 1-page reflection. Code alone isn&#x27;t enough.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.5%, toxic: 0.5%, spam: 1.9%">92.7%<br>
+              <small>acceptable: 97.5%, toxic: 0.5%, spam: 1.9%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>52</td>
+          <td>Shruti Deshpande<br>
+              <small>Share your artifacts</small></td>
+          <td class="comment">Built a Marathi–English vocabulary flashcard app. Claude handled the Devanagari fonts without issues, which surprised me.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 92.8%, toxic: 0.7%, spam: 6.5%">79.9%<br>
+              <small>acceptable: 92.8%, toxic: 0.7%, spam: 6.5%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>53</td>
+          <td>Karthik Reddy<br>
+              <small>Share your artifacts</small></td>
+          <td class="comment">Nice! Does it do audio pronunciation? The browser speech API supports mr-IN I think.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 96.2%, toxic: 1.2%, spam: 2.6%">88.9%<br>
+              <small>acceptable: 96.2%, toxic: 1.2%, spam: 2.6%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>54</td>
+          <td>Assignment Help Zone<br>
+              <small>General</small></td>
+          <td class="comment">Need help with your assignment? Our PhD experts do Python, Java, ML, AI projects. Fast delivery in 24 hours. Visit www.assignmenthelpzone.co.in or mail help@assignmenthelpzone.co.in</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 0.7%, toxic: 0.7%, spam: 98.6%">95.9%<br>
+              <small>acceptable: 0.7%, toxic: 0.7%, spam: 98.6%</small></td>
+        </tr>
+        
+        <tr data-label="toxic">
+          <td>55</td>
+          <td>Saurabh Yadav<br>
+              <small>Share your artifacts</small></td>
+          <td class="comment">Ankit&#x27;s GATE quiz app is trash just like his GATE score will be 😂😂</td>
+          <td><span class="badge toxic">TOXIC</span></td>
+          <td title="acceptable: 3.4%, toxic: 92.5%, spam: 4.1%">78.8%<br>
+              <small>acceptable: 3.4%, toxic: 92.5%, spam: 4.1%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>56</td>
+          <td>Prateek Saxena<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Request: can the TA share a sample of a good reflection from last year? Not sure what level of detail is expected.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 96.0%, toxic: 1.9%, spam: 2.1%">88.2%<br>
+              <small>acceptable: 96.0%, toxic: 1.9%, spam: 2.1%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>57</td>
+          <td>Aman Tiwari<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Sir, I submitted the wrong link by mistake (my old repo). Can you allow a resubmission?</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.6%, toxic: 0.6%, spam: 0.9%">95.7%<br>
+              <small>acceptable: 98.6%, toxic: 0.6%, spam: 0.9%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>58</td>
+          <td>Riya Thomas<br>
+              <small>Doubts</small></td>
+          <td class="comment">Is it fine if our artifact uses a free public API (like weather)? Or should everything be self-contained?</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 95.8%, toxic: 2.1%, spam: 2.1%">87.9%<br>
+              <small>acceptable: 95.8%, toxic: 2.1%, spam: 2.1%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>59</td>
+          <td>Meera Krishnan<br>
+              <small>General</small></td>
+          <td class="comment">My experience: Claude is better at explaining, Codex felt faster for refactoring. Both hallucinated a library function once.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.9%, toxic: 0.7%, spam: 1.4%">93.8%<br>
+              <small>acceptable: 97.9%, toxic: 0.7%, spam: 1.4%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>60</td>
+          <td>Nikhil Bansal<br>
+              <small>General</small></td>
+          <td class="comment">Agree. Codex invented a &quot;pd.read_html_table&quot; function for me 😂 Always run the code.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.2%, toxic: 0.5%, spam: 1.3%">94.5%<br>
+              <small>acceptable: 98.2%, toxic: 0.5%, spam: 1.3%</small></td>
+        </tr>
+        
+        <tr data-label="toxic">
+          <td>61</td>
+          <td>Rahul Chauhan<br>
+              <small>General</small></td>
+          <td class="comment">Shut up Meera, nobody cares about your &quot;experience&quot;. Topper behaviour as usual 🙄</td>
+          <td><span class="badge toxic">TOXIC</span></td>
+          <td title="acceptable: 1.6%, toxic: 96.2%, spam: 2.2%">89.0%<br>
+              <small>acceptable: 1.6%, toxic: 96.2%, spam: 2.2%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>62</td>
+          <td>Omkar Jadhav<br>
+              <small>Share your artifacts</small></td>
+          <td class="comment">Our hostel group made an attendance tracker for the mess. Uploaded screenshots to the drive folder as instructed.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.7%, toxic: 0.4%, spam: 0.9%">96.0%<br>
+              <small>acceptable: 98.7%, toxic: 0.4%, spam: 0.9%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>63</td>
+          <td>Notes Wala Bhaiya<br>
+              <small>General</small></td>
+          <td class="comment">Hello dear friends, I am selling original notes of all subjects 3rd year CSE. PDF available at low price. Contact on Instagram @notes.wala.bhaiya</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 2.0%, toxic: 1.5%, spam: 96.5%">89.9%<br>
+              <small>acceptable: 2.0%, toxic: 1.5%, spam: 96.5%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>64</td>
+          <td>Arjun Das<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Ma&#x27;am, our artifact is for visually impaired users (screen-reader friendly bus timings). Can we get extra time to test it with actual users from the NGO?</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 96.5%, toxic: 1.0%, spam: 2.5%">89.8%<br>
+              <small>acceptable: 96.5%, toxic: 1.0%, spam: 2.5%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>65</td>
+          <td>Neha Kapoor<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">That&#x27;s a great project, Arjun. Happy to help test with NVDA if you need another tester.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.5%, toxic: 0.3%, spam: 2.1%">92.8%<br>
+              <small>acceptable: 97.5%, toxic: 0.3%, spam: 2.1%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>66</td>
+          <td>Sonu Kumar<br>
+              <small>Doubts</small></td>
+          <td class="comment">Kya reflection Hindi mein likh sakte hain? My English writing is not that good but I can explain properly in Hindi.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.3%, toxic: 0.7%, spam: 1.0%">94.9%<br>
+              <small>acceptable: 98.3%, toxic: 0.7%, spam: 1.0%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>67</td>
+          <td>Ishita Banerjee<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">The rubric weightage is unclear. 40% artifact, 40% reflection, 20% viva — is that correct? The slides said something different.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.1%, toxic: 1.5%, spam: 1.5%">91.4%<br>
+              <small>acceptable: 97.1%, toxic: 1.5%, spam: 1.5%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>68</td>
+          <td>Ritika Sen<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">The grading for assignment 2 was unfair in my opinion, the same output got different marks in different batches. Please clarify the re-evaluation process.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.1%, toxic: 1.5%, spam: 1.4%">91.6%<br>
+              <small>acceptable: 97.1%, toxic: 1.5%, spam: 1.4%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>69</td>
+          <td>Vikram Singh<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">TA doesn&#x27;t know anything himself, how will he grade AI projects? Clueless fellow should go back to school.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 86.6%, toxic: 11.9%, spam: 1.5%">64.6%<br>
+              <small>acceptable: 86.6%, toxic: 11.9%, spam: 1.5%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>70</td>
+          <td>Harsh Agarwal<br>
+              <small>Doubts</small></td>
+          <td class="comment">Tip for anyone using Claude artifacts: ask it to add a &quot;reset data&quot; button. Saved me during the demo when the test data got messed up.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 93.8%, toxic: 0.6%, spam: 5.6%">82.6%<br>
+              <small>acceptable: 93.8%, toxic: 0.6%, spam: 5.6%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>71</td>
+          <td>Giveaway India<br>
+              <small>General</small></td>
+          <td class="comment">FREE iPhone 17 giveaway for college students 🎉 Just fill the form with your name, college ID and Aadhaar number: forms-giveaway-india.com/iphone</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 1.8%, toxic: 1.7%, spam: 96.5%">89.9%<br>
+              <small>acceptable: 1.8%, toxic: 1.7%, spam: 96.5%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>72</td>
+          <td>Gaurav Pandey<br>
+              <small>Share your artifacts</small></td>
+          <td class="comment">Our team used Codex to convert old C++ lab programs into a small web visualizer for sorting algorithms. Feedback welcome!</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 95.1%, toxic: 0.9%, spam: 3.9%">86.0%<br>
+              <small>acceptable: 95.1%, toxic: 0.9%, spam: 3.9%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>73</td>
+          <td>Shruti Deshpande<br>
+              <small>Share your artifacts</small></td>
+          <td class="comment">Very nice, but the bubble sort animation is too fast to follow. Maybe add a speed slider?</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.3%, toxic: 1.3%, spam: 1.4%">92.2%<br>
+              <small>acceptable: 97.3%, toxic: 1.3%, spam: 1.4%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>74</td>
+          <td>Tanvi Gupta<br>
+              <small>Doubts</small></td>
+          <td class="comment">Is there a word limit for the reflection? I wrote 1100 words, feels too long.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.4%, toxic: 0.8%, spam: 0.9%">95.1%<br>
+              <small>acceptable: 98.4%, toxic: 0.8%, spam: 0.9%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>75</td>
+          <td>Pooja Nair<br>
+              <small>Doubts</small></td>
+          <td class="comment">Ma&#x27;am said max 1 page, so around 500 words.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.9%, toxic: 0.4%, spam: 0.7%">96.8%<br>
+              <small>acceptable: 98.9%, toxic: 0.4%, spam: 0.7%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>76</td>
+          <td>Deepak Mishra<br>
+              <small>Share your artifacts</small></td>
+          <td class="comment">Everyone from that side of the hostel copies, it&#x27;s in their blood. Don&#x27;t trust their &quot;original&quot; projects.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 57.4%, toxic: 37.8%, spam: 4.9%">21.1%<br>
+              <small>acceptable: 57.4%, toxic: 37.8%, spam: 4.9%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>77</td>
+          <td>Gaurav Pandey<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Sir, what happens if our deployed link stops working after submission (free hosting expires)? Will we lose marks?</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 96.2%, toxic: 2.1%, spam: 1.7%">89.1%<br>
+              <small>acceptable: 96.2%, toxic: 2.1%, spam: 1.7%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>78</td>
+          <td>Kavya Pillai<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">I shared a short screen recording as a backup in case the link fails. Maybe others should do the same.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.7%, toxic: 0.2%, spam: 1.1%">96.2%<br>
+              <small>acceptable: 98.7%, toxic: 0.2%, spam: 1.1%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>79</td>
+          <td>InstaGrowth Services<br>
+              <small>General</small></td>
+          <td class="comment">👉 Get 10,000 Instagram followers in 1 day 👈 Real &amp; active. Best for students starting tech pages. WhatsApp 90000 67890</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 0.7%, toxic: 1.0%, spam: 98.3%">94.9%<br>
+              <small>acceptable: 0.7%, toxic: 1.0%, spam: 98.3%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>80</td>
+          <td>Kunal Bhatia<br>
+              <small>General</small></td>
+          <td class="comment">I&#x27;m struggling honestly. Everyone is posting cool apps and mine barely works. Is it okay to submit something simple if the reflection is honest?</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 95.6%, toxic: 2.1%, spam: 2.3%">87.2%<br>
+              <small>acceptable: 95.6%, toxic: 2.1%, spam: 2.3%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>81</td>
+          <td>Neha Kapoor<br>
+              <small>General</small></td>
+          <td class="comment">Absolutely okay. Sir said in class that the reflection about what failed counts a lot. Don&#x27;t stress, simple + honest &gt; fancy + copied.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 95.8%, toxic: 2.0%, spam: 2.2%">87.7%<br>
+              <small>acceptable: 95.8%, toxic: 2.0%, spam: 2.2%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>82</td>
+          <td>Kunal Bhatia<br>
+              <small>General</small></td>
+          <td class="comment">Thank you Neha, that really helps 🙂</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 95.3%, toxic: 1.5%, spam: 3.2%">86.5%<br>
+              <small>acceptable: 95.3%, toxic: 1.5%, spam: 3.2%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>83</td>
+          <td>Saurabh Yadav<br>
+              <small>General</small></td>
+          <td class="comment">lol Kunal still crying about his project. Maybe engineering isn&#x27;t for you bro, try BA.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 96.6%, toxic: 2.9%, spam: 0.5%">90.2%<br>
+              <small>acceptable: 96.6%, toxic: 2.9%, spam: 0.5%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>84</td>
+          <td>Sonu Kumar<br>
+              <small>Doubts</small></td>
+          <td class="comment">Doubt: Claude gave different code for the same prompt twice. Which one should we submit, and should we mention it?</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.5%, toxic: 0.7%, spam: 0.8%">95.6%<br>
+              <small>acceptable: 98.5%, toxic: 0.7%, spam: 0.8%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>85</td>
+          <td>Meera Krishnan<br>
+              <small>Doubts</small></td>
+          <td class="comment">Submit the one you tested and understand. Mentioning the variation in your reflection is actually a good insight.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.3%, toxic: 0.6%, spam: 1.1%">95.0%<br>
+              <small>acceptable: 98.3%, toxic: 0.6%, spam: 1.1%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>86</td>
+          <td>Work From Home Jobs<br>
+              <small>General</small></td>
+          <td class="comment">Part time job for students: typing work, ₹800/day, no target. Registration fee only ₹299. Reply &quot;INTERESTED&quot; with your number.</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 3.5%, toxic: 1.5%, spam: 95.0%">85.5%<br>
+              <small>acceptable: 3.5%, toxic: 1.5%, spam: 95.0%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>87</td>
+          <td>Aditya Kulkarni<br>
+              <small>Doubts</small></td>
+          <td class="comment">Can we work on an existing personal project and extend it with AI, or must it be new?</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.0%, toxic: 0.8%, spam: 1.2%">94.1%<br>
+              <small>acceptable: 98.0%, toxic: 0.8%, spam: 1.2%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>88</td>
+          <td>Saurabh Yadav<br>
+              <small>Share your artifacts</small></td>
+          <td class="comment">Ankit, sorry for that comment about your app and your GATE score, it was uncalled for. The app is actually good, just that one bug.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.4%, toxic: 1.5%, spam: 1.1%">92.4%<br>
+              <small>acceptable: 97.4%, toxic: 1.5%, spam: 1.1%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>89</td>
+          <td>Ishita Banerjee<br>
+              <small>Share your artifacts</small></td>
+          <td class="comment">Our college fest registration form artifact is live, please test and break it before Friday 🙏</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 94.3%, toxic: 0.4%, spam: 5.3%">83.9%<br>
+              <small>acceptable: 94.3%, toxic: 0.4%, spam: 5.3%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>90</td>
+          <td>Riya Thomas<br>
+              <small>Share your artifacts</small></td>
+          <td class="comment">Found a bug: entering an emoji in the name field crashes the confirmation page. 😅</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.3%, toxic: 0.9%, spam: 0.8%">95.0%<br>
+              <small>acceptable: 98.3%, toxic: 0.9%, spam: 0.8%</small></td>
+        </tr>
+        
+        <tr data-label="toxic">
+          <td>91</td>
+          <td>Vikram Singh<br>
+              <small>Share your artifacts</small></td>
+          <td class="comment">Who made this garbage form? Typical mechanical branch people trying to code. Stick to your lathe machines 😂</td>
+          <td><span class="badge toxic">TOXIC</span></td>
+          <td title="acceptable: 10.8%, toxic: 84.6%, spam: 4.7%">59.4%<br>
+              <small>acceptable: 10.8%, toxic: 84.6%, spam: 4.7%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>92</td>
+          <td>Shruti Deshpande<br>
+              <small>Doubts</small></td>
+          <td class="comment">Does using AI-generated images in the artifact need attribution too?</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.5%, toxic: 1.0%, spam: 1.5%">92.8%<br>
+              <small>acceptable: 97.5%, toxic: 1.0%, spam: 1.5%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>93</td>
+          <td>Siddharth Rao<br>
+              <small>General</small></td>
+          <td class="comment">Will there be a session on how to evaluate AI-generated code for security issues? Seems important for the next assignment.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.0%, toxic: 1.6%, spam: 1.4%">91.1%<br>
+              <small>acceptable: 97.0%, toxic: 1.6%, spam: 1.4%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>94</td>
+          <td>cs307_solutions<br>
+              <small>General</small></td>
+          <td class="comment">CS307 complete solved assignments + viva answers available!! 100% working code. DM on telegram @cs307_solutions_hub. Pay after delivery.</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 1.7%, toxic: 1.3%, spam: 97.0%">91.2%<br>
+              <small>acceptable: 1.7%, toxic: 1.3%, spam: 97.0%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>95</td>
+          <td>Ritika Sen<br>
+              <small>General</small></td>
+          <td class="comment">Sir, please consider allowing pair submissions next time, 4-member groups are hard to coordinate.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 96.3%, toxic: 1.9%, spam: 1.8%">89.2%<br>
+              <small>acceptable: 96.3%, toxic: 1.9%, spam: 1.8%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>96</td>
+          <td>Omkar Jadhav<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Finally submitted at 11:57 PM 😂 Never doing last-minute again (I say this every semester).</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.9%, toxic: 0.5%, spam: 0.6%">96.6%<br>
+              <small>acceptable: 98.9%, toxic: 0.5%, spam: 0.6%</small></td>
+        </tr>
+        
+        <tr data-label="toxic">
+          <td>97</td>
+          <td>Rahul Chauhan<br>
+              <small>Doubts</small></td>
+          <td class="comment">If you can&#x27;t even set up an API key you shouldn&#x27;t be in CSE. Stop spamming the forum with your stupid doubts, dumbo.</td>
+          <td><span class="badge toxic">TOXIC</span></td>
+          <td title="acceptable: 2.4%, toxic: 94.7%, spam: 2.9%">84.8%<br>
+              <small>acceptable: 2.4%, toxic: 94.7%, spam: 2.9%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>98</td>
+          <td>Divya Hegde<br>
+              <small>General</small></td>
+          <td class="comment">Thanks to everyone who answered doubts here, this thread was more useful than the lectures honestly 😄</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 99.2%, toxic: 0.4%, spam: 0.5%">97.6%<br>
+              <small>acceptable: 99.2%, toxic: 0.4%, spam: 0.5%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>99</td>
+          <td>Raju Startup<br>
+              <small>General</small></td>
+          <td class="comment">Hey guys check out my startup app, we are giving ₹100 Paytm cash for every signup using my referral code RAJU100 😊 Link: refer-n-earn.app/RAJU100</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 0.7%, toxic: 0.8%, spam: 98.5%">95.4%<br>
+              <small>acceptable: 0.7%, toxic: 0.8%, spam: 98.5%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>100</td>
+          <td>Shreya Patil<br>
+              <small>General</small></td>
+          <td class="comment">Ma&#x27;am, any update on when the next assignment will be released? Want to plan around mid-sems.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 96.2%, toxic: 2.1%, spam: 1.7%">89.0%<br>
+              <small>acceptable: 96.2%, toxic: 2.1%, spam: 1.7%</small></td>
+        </tr>
+        </tbody>
+</table>
+</div>
+<script>
+const search = document.getElementById('search');
+const filter = document.getElementById('filter');
+function updateRows() {
+  const query = search.value.toLowerCase();
+  const label = filter.value;
+  document.querySelectorAll('tbody tr').forEach(row => {
+    const matchesText = row.innerText.toLowerCase().includes(query);
+    const matchesLabel = label === 'all' || row.dataset.label === label;
+    row.hidden = !(matchesText && matchesLabel);
+  });
+}
+search.addEventListener('input', updateRows);
+filter.addEventListener('change', updateRows);
+</script>
+</body>
+</html>
