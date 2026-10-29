@@ -40,3 +40,19 @@ Potential misclassifications identified during review are documented in `MISTAKE
 ## Security
 
 API credentials must remain local and must never be committed to the public repository.
+
+
+
+
+
+# Notes
+
+## Second Run
+
+I ran the script again using the `clef` model and `comments-v2.json`. The results were saved in `results-v2.html`.
+
+The report has 100 comments and no errors. I checked the comments and their labels manually. I found some classifications that I felt were wrong or not fully clear.
+
+I added these cases to `MISTAKES-v2.md` with a short reason for each one. Some comments were difficult to classify, so I used my own judgment while reviewing them.
+
+The API worked properly, and the report was generated successfully.
