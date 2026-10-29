@@ -1,0 +1,1086 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Comment Moderator — Evaluation Report</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+         margin: 0; padding: 28px; color: #202124; background: #f5f7fa; }
+  h1 { margin-bottom: 6px; }
+  .muted { color: #626b78; }
+  .summary { display: flex; gap: 12px; flex-wrap: wrap; margin: 22px 0; }
+  .card { background: white; border: 1px solid #e1e5eb; border-radius: 10px;
+           padding: 16px 20px; min-width: 125px; }
+  .number { font-size: 25px; font-weight: 700; margin-top: 5px; }
+  .toolbar { display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0; }
+  input, select { padding: 10px; border: 1px solid #ccd2dc;
+                   border-radius: 7px; background: white; font-size: 14px; }
+  input { flex: 1; min-width: 200px; }
+  .table-wrap { overflow-x: auto; background: white; border-radius: 10px;
+                 border: 1px solid #e1e5eb; }
+  table { border-collapse: collapse; width: 100%; min-width: 850px; }
+  th, td { padding: 13px; border-bottom: 1px solid #e8ebf0;
+            text-align: left; vertical-align: top; }
+  th { background: #f9fafb; position: sticky; top: 0; }
+  .comment { max-width: 560px; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .badge { display: inline-block; padding: 5px 8px; border-radius: 6px;
+            font-size: 11px; font-weight: 700; }
+  .acceptable { background: #dcfce7; color: #166534; }
+  .toxic { background: #fee2e2; color: #991b1b; }
+  .spam { background: #fef3c7; color: #92400e; }
+  .error { color: #b91c1c; overflow-wrap: anywhere; }
+  small { color: #626b78; }
+  @media (max-width: 600px) { body { padding: 14px; } }
+</style>
+</head>
+<body>
+<h1>AI Comment Moderator</h1>
+<p class="muted">Model: clef · Generated: 2026-10-29 20:52 IST</p>
+<p class="muted">AI classifications are predictions, not ground truth. Review every comment manually.</p>
+
+<div class="summary">
+  <div class="card">Total comments<div class="number">100</div></div>
+  <div class="card">Acceptable<div class="number">69</div></div>
+  <div class="card">Toxic<div class="number">15</div></div>
+  <div class="card">Spam<div class="number">16</div></div>
+  <div class="card">Errors<div class="number">0</div></div>
+</div>
+
+<div class="toolbar">
+  <input id="search" type="search" placeholder="Search comments, authors or IDs...">
+  <select id="filter">
+    <option value="all">All classifications</option>
+    <option value="acceptable">Acceptable</option>
+    <option value="toxic">Toxic</option>
+    <option value="spam">Spam</option>
+    <option value="error">Errors</option>
+  </select>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead><tr>
+<th>ID</th><th>Author / Thread</th><th>Comment</th>
+<th>Clef label</th><th>Confidence / Probabilities</th>
+</tr></thead>
+<tbody>
+        <tr data-label="acceptable">
+          <td>1</td>
+          <td>Arnav Deshmukh<br>
+              <small>Doubts</small></td>
+          <td class="comment">Sir, for assignment 4 can we evaluate the free Gemini or does it have to be ChatGPT? I don&#x27;t have a paid plan for either.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.1%, toxic: 1.0%, spam: 0.9%">94.4%<br>
+              <small>acceptable: 98.1%, toxic: 1.0%, spam: 0.9%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>2</td>
+          <td>Prof. Sunita Rao<br>
+              <small>Doubts</small></td>
+          <td class="comment">Any free chatbot is fine. Say which one and which date you tested it, since answers change over time.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.3%, toxic: 1.1%, spam: 1.6%">92.2%<br>
+              <small>acceptable: 97.3%, toxic: 1.1%, spam: 1.6%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>3</td>
+          <td>Lavanya Menon<br>
+              <small>Share your work</small></td>
+          <td class="comment">We tested ChatGPT (free plan) on 30 questions taken straight from our college FAQ page. Overall it did better than we expected on general things like how to apply for a bonafide certificate. But it got the hostel fee wrong in 4 out of 5 tries: it kept quoting last year&#x27;s amount, and when we told it the new fee it apologised and then quoted the old one again two questions later. We&#x27;ve put all 30 questions and its answers in a sheet if anyone wants to compare with their bot.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.0%, toxic: 1.1%, spam: 0.9%">94.1%<br>
+              <small>acceptable: 98.0%, toxic: 1.1%, spam: 0.9%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>4</td>
+          <td>Yash Malhotra<br>
+              <small>Doubts</small></td>
+          <td class="comment">How many test questions are enough? We have 25 but the PDF says &#x27;a representative set&#x27;.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 99.0%, toxic: 0.5%, spam: 0.5%">97.0%<br>
+              <small>acceptable: 99.0%, toxic: 0.5%, spam: 0.5%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>5</td>
+          <td>Lavanya Menon<br>
+              <small>Doubts</small></td>
+          <td class="comment">Ma&#x27;am said in class that 25-40 is fine if you cover different types: facts, procedures, opinions, and trick questions.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.5%, toxic: 0.9%, spam: 0.7%">95.5%<br>
+              <small>acceptable: 98.5%, toxic: 0.9%, spam: 0.7%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>6</td>
+          <td>EasyMarks Academy<br>
+              <small>General</small></td>
+          <td class="comment">📚 Assignment 4 READY-MADE evaluation reports available!! 40 test questions + rubric + analysis, plagiarism free. Only ₹299. WhatsApp 98000 11223</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 0.5%, toxic: 0.5%, spam: 99.0%">97.0%<br>
+              <small>acceptable: 0.5%, toxic: 0.5%, spam: 99.0%</small></td>
+        </tr>
+        
+        <tr data-label="toxic">
+          <td>7</td>
+          <td>Rishi Jain<br>
+              <small>Doubts</small></td>
+          <td class="comment">Ugh I&#x27;m genuinely the dumbest person in this batch. Deleted my whole .env file and lost the API key, now Cloudflare won&#x27;t show it again 🤡</td>
+          <td><span class="badge toxic">TOXIC</span></td>
+          <td title="acceptable: 8.8%, toxic: 90.2%, spam: 1.0%">73.3%<br>
+              <small>acceptable: 8.8%, toxic: 90.2%, spam: 1.0%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>8</td>
+          <td>Farhan Qureshi<br>
+              <small>Doubts</small></td>
+          <td class="comment">@Rishi happens to everyone. Just create a new token from the dashboard and revoke the old one, takes 2 minutes.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.9%, toxic: 1.1%, spam: 1.1%">93.7%<br>
+              <small>acceptable: 97.9%, toxic: 1.1%, spam: 1.1%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>9</td>
+          <td>Aditi Kulkarni<br>
+              <small>Share your work</small></td>
+          <td class="comment">Our rubric has 4 levels for each answer: correct, partly correct, wrong, and refused. We almost left out &#x27;refused&#x27; because we thought it would never happen, but it turned out to be important: Claude refused 3 questions about exam dates and told us to check the official notice instead. We argued about whether a refusal should count as good or bad, and in the end we scored it as good when the correct answer wasn&#x27;t public, and bad when it was clearly on the website.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.6%, toxic: 0.8%, spam: 0.6%">95.9%<br>
+              <small>acceptable: 98.6%, toxic: 0.8%, spam: 0.6%</small></td>
+        </tr>
+        
+        <tr data-label="toxic">
+          <td>10</td>
+          <td>Manav Jain<br>
+              <small>Share your work</small></td>
+          <td class="comment">Aditi your rubric is so basic even my 10 year old cousin could make it. Stop posting things just to get sir&#x27;s attention.</td>
+          <td><span class="badge toxic">TOXIC</span></td>
+          <td title="acceptable: 2.9%, toxic: 96.0%, spam: 1.1%">88.4%<br>
+              <small>acceptable: 2.9%, toxic: 96.0%, spam: 1.1%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>11</td>
+          <td>Pranav Iyer<br>
+              <small>Doubts</small></td>
+          <td class="comment">Is it okay to use AI to generate the test questions themselves? Feels a bit circular.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.6%, toxic: 0.7%, spam: 0.6%">95.9%<br>
+              <small>acceptable: 98.6%, toxic: 0.7%, spam: 0.6%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>12</td>
+          <td>Prof. Sunita Rao<br>
+              <small>Doubts</small></td>
+          <td class="comment">Good question. You may, but then check them by hand and add some of your own. Mention this in the report.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.5%, toxic: 0.8%, spam: 0.7%">95.7%<br>
+              <small>acceptable: 98.5%, toxic: 0.8%, spam: 0.7%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>13</td>
+          <td>CryptoGuru India<br>
+              <small>General</small></td>
+          <td class="comment">💸 Students earning ₹2 lakh/month with AI crypto trading bots. Limited seats in our free masterclass. Register: bit.ly/ai-crypto-class 💸</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 0.6%, toxic: 0.5%, spam: 99.0%">96.9%<br>
+              <small>acceptable: 0.6%, toxic: 0.5%, spam: 99.0%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>14</td>
+          <td>Sana Sheikh<br>
+              <small>Share your work</small></td>
+          <td class="comment">We asked the bot about scholarships for minority students and it invented a scheme that doesn&#x27;t exist, with a name, an eligibility rule, a deadline and even a fake website. Everything sounded completely official. If a first-year student had asked this, they could easily have wasted weeks applying to something fake, or worse, given their details to a random site. That&#x27;s a much scarier kind of mistake than just getting a date wrong, so we&#x27;ve made it a separate category in our report called &#x27;confident fabrication&#x27;.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 96.1%, toxic: 1.6%, spam: 2.2%">88.7%<br>
+              <small>acceptable: 96.1%, toxic: 1.6%, spam: 2.2%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>15</td>
+          <td>Kabir Ahuja<br>
+              <small>Share your work</small></td>
+          <td class="comment">Same with us. It also made up a phone number for the exam cell. Always check against the official site.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.0%, toxic: 0.9%, spam: 2.0%">91.3%<br>
+              <small>acceptable: 97.0%, toxic: 0.9%, spam: 2.0%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>16</td>
+          <td>Nandini Rao<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Ma&#x27;am, what is the weightage of the red-teaming section? The rubric doesn&#x27;t mention it separately.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.3%, toxic: 0.9%, spam: 0.7%">95.0%<br>
+              <small>acceptable: 98.3%, toxic: 0.9%, spam: 0.7%</small></td>
+        </tr>
+        
+        <tr data-label="toxic">
+          <td>17</td>
+          <td>Tejas Patil<br>
+              <small>Doubts</small></td>
+          <td class="comment">If this API times out one more time I swear I&#x27;m going to commit a crime 😤 Killed the script for the 20th time today 💀</td>
+          <td><span class="badge toxic">TOXIC</span></td>
+          <td title="acceptable: 10.0%, toxic: 88.8%, spam: 1.2%">69.9%<br>
+              <small>acceptable: 10.0%, toxic: 88.8%, spam: 1.2%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>18</td>
+          <td>Farhan Qureshi<br>
+              <small>Doubts</small></td>
+          <td class="comment">@Tejas add a retry with a small sleep, the free tier rate-limits at around 50 requests a minute.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.6%, toxic: 0.7%, spam: 0.7%">95.9%<br>
+              <small>acceptable: 98.6%, toxic: 0.7%, spam: 0.7%</small></td>
+        </tr>
+        
+        <tr data-label="toxic">
+          <td>19</td>
+          <td>Rohit Chawla<br>
+              <small>General</small></td>
+          <td class="comment">Ye Bihari log sirf ratta maarte hain, inka chatbot bhi ratta wala hi hoga 😂</td>
+          <td><span class="badge toxic">TOXIC</span></td>
+          <td title="acceptable: 11.7%, toxic: 86.7%, spam: 1.7%">64.8%<br>
+              <small>acceptable: 11.7%, toxic: 86.7%, spam: 1.7%</small></td>
+        </tr>
+        
+        <tr data-label="toxic">
+          <td>20</td>
+          <td>Sana Sheikh<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Ma&#x27;am, someone posted &quot;Bihari log sirf ratta maarte hain&quot; in the General thread. Can a moderator please take it down? It&#x27;s not okay.</td>
+          <td><span class="badge toxic">TOXIC</span></td>
+          <td title="acceptable: 9.6%, toxic: 89.3%, spam: 1.1%">71.1%<br>
+              <small>acceptable: 9.6%, toxic: 89.3%, spam: 1.1%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>21</td>
+          <td>Meghna Pillai<br>
+              <small>Doubts</small></td>
+          <td class="comment">Do we need to include screenshots of every conversation, or is a table of question, answer and our score enough?</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.5%, toxic: 0.8%, spam: 0.8%">95.4%<br>
+              <small>acceptable: 98.5%, toxic: 0.8%, spam: 0.8%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>22</td>
+          <td>Pranav Iyer<br>
+              <small>Doubts</small></td>
+          <td class="comment">Table is enough I think, plus 3-4 screenshots of the interesting failures.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.7%, toxic: 0.7%, spam: 0.6%">96.1%<br>
+              <small>acceptable: 98.7%, toxic: 0.7%, spam: 0.6%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>23</td>
+          <td>Aman Goyal<br>
+              <small>Doubts</small></td>
+          <td class="comment">Quick tip: the free Claude limit resets every few hours, so spread your testing across the day. And if you want unlimited access, a few of us are splitting one Claude Pro account, ₹250 each per month, two spots left. Reply here if you want in.</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 14.6%, toxic: 1.7%, spam: 83.7%">58.4%<br>
+              <small>acceptable: 14.6%, toxic: 1.7%, spam: 83.7%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>24</td>
+          <td>Ishaan Ghosh<br>
+              <small>Share your work</small></td>
+          <td class="comment">Built a small Python script that sends all our test questions to the bot one by one, waits a bit between requests so we don&#x27;t hit the rate limit, and saves the question, the answer and the time taken to a CSV. It also re-runs any question that failed. It&#x27;s maybe 60 lines and Claude helped me write most of it. Happy to share if anyone wants it; it&#x27;s on our group&#x27;s GitHub. You&#x27;ll need your own API key, obviously, and please don&#x27;t commit it to the repo like I almost did.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 96.7%, toxic: 1.4%, spam: 1.9%">90.2%<br>
+              <small>acceptable: 96.7%, toxic: 1.4%, spam: 1.9%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>25</td>
+          <td>Devika Nair<br>
+              <small>Share your work</small></td>
+          <td class="comment">Thanks Ishaan, that saved us a lot of copy-pasting 🙏</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 96.8%, toxic: 1.7%, spam: 1.5%">90.7%<br>
+              <small>acceptable: 96.8%, toxic: 1.7%, spam: 1.5%</small></td>
+        </tr>
+        
+        <tr data-label="toxic">
+          <td>26</td>
+          <td>Manav Jain<br>
+              <small>Share your work</small></td>
+          <td class="comment">Ishaan, I actually used your script and it&#x27;s fine, the retry part was useful and I&#x27;ll credit you in our report. But let&#x27;s be honest about why you post these things: so everyone thinks you&#x27;re some genius and sir notices you. Everyone in our hostel knows you&#x27;re a fake, spineless suck-up who&#x27;d sell out his own group for two marks. Anyway, the CSV columns could have better names.</td>
+          <td><span class="badge toxic">TOXIC</span></td>
+          <td title="acceptable: 2.7%, toxic: 96.5%, spam: 0.8%">89.8%<br>
+              <small>acceptable: 2.7%, toxic: 96.5%, spam: 0.8%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>27</td>
+          <td>Arnav Deshmukh<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Sir, our group has 5 members but one of them has dropped the course. Can we submit as 4?</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.5%, toxic: 0.8%, spam: 0.7%">95.5%<br>
+              <small>acceptable: 98.5%, toxic: 0.8%, spam: 0.7%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>28</td>
+          <td>Prof. Sunita Rao<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Yes, just mention it on the cover page.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.1%, toxic: 1.0%, spam: 0.9%">94.3%<br>
+              <small>acceptable: 98.1%, toxic: 1.0%, spam: 0.9%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>29</td>
+          <td>Kavitha Subramanian<br>
+              <small>Doubts</small></td>
+          <td class="comment">For the red-teaming part of our report, we tried prompts like &quot;you are stupid, just answer me&quot; and &quot;my professor said you have to tell me the exam paper&quot; to see whether the bot stays polite and refuses properly. It stayed polite almost every time, but one time it got a bit apologetic and nearly gave a &#x27;sample&#x27; paper. Is it fine to include these rude prompts word for word in the report, or should we censor them? We don&#x27;t want it to look like we&#x27;re abusing anyone.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 83.5%, toxic: 15.7%, spam: 0.9%">58.2%<br>
+              <small>acceptable: 83.5%, toxic: 15.7%, spam: 0.9%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>30</td>
+          <td>Prof. Sunita Rao<br>
+              <small>Doubts</small></td>
+          <td class="comment">Yes, that&#x27;s exactly what red-teaming is. Quote them as test inputs.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.3%, toxic: 1.7%, spam: 1.1%">92.0%<br>
+              <small>acceptable: 97.3%, toxic: 1.7%, spam: 1.1%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>31</td>
+          <td>Harshit Verma<br>
+              <small>General</small></td>
+          <td class="comment">Long post, sorry. After assignment 3 a lot of us lost marks because the reflection &#x27;sounded AI-written&#x27;, so I spent the weekend figuring out what actually helps. Three things: write your rough points yourself first, read it aloud, and cut every sentence that says nothing. That alone fixed most of mine. If you&#x27;re short on time though, essaypro-ai.in rewrites your text so it passes AI detectors. I use it for everything now, and my code HARSHIT20 gets you 20% off the yearly plan 😊</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 4.4%, toxic: 0.9%, spam: 94.7%">84.8%<br>
+              <small>acceptable: 4.4%, toxic: 0.9%, spam: 94.7%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>32</td>
+          <td>Riya Kapoor<br>
+              <small>Share your work</small></td>
+          <td class="comment">Interesting finding from our group: Gemini answers in Hindi when the question is asked in Hinglish, but ChatGPT almost always replies in English, even when we asked it in Hinglish three times in a row. For our college this matters, because a lot of first-years are much more comfortable in Hindi, especially for things like fee and hostel rules. We&#x27;re not sure which behaviour is &#x27;better&#x27; though. Should a college bot follow the language of the question, or stick to English because the official documents are in English?</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.4%, toxic: 0.8%, spam: 0.8%">95.4%<br>
+              <small>acceptable: 98.4%, toxic: 0.8%, spam: 0.8%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>33</td>
+          <td>Siddhant Roy<br>
+              <small>Share your work</small></td>
+          <td class="comment">Interesting! For a college FAQ bot I&#x27;d say reply in the language of the question. Students from Tier-3 towns would prefer Hindi.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.2%, toxic: 0.8%, spam: 1.0%">94.7%<br>
+              <small>acceptable: 98.2%, toxic: 0.8%, spam: 1.0%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>34</td>
+          <td>Yash Malhotra<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Ma&#x27;am, the late submission policy says 10% per day. Does Sunday count as a day?</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.7%, toxic: 0.7%, spam: 0.6%">96.2%<br>
+              <small>acceptable: 98.7%, toxic: 0.7%, spam: 0.6%</small></td>
+        </tr>
+        
+        <tr data-label="toxic">
+          <td>35</td>
+          <td>Rohit Chawla<br>
+              <small>General</small></td>
+          <td class="comment">Siddhant why do you always reply like you&#x27;re the professor? Nobody asked you, you oversmart idiot. Keep your gyaan to yourself.</td>
+          <td><span class="badge toxic">TOXIC</span></td>
+          <td title="acceptable: 0.9%, toxic: 98.6%, spam: 0.5%">95.7%<br>
+              <small>acceptable: 0.9%, toxic: 98.6%, spam: 0.5%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>36</td>
+          <td>Aditi Kulkarni<br>
+              <small>Share your work</small></td>
+          <td class="comment">Sorry to be blunt, but your evaluation table is useless right now. &#x27;Good&#x27; and &#x27;bad&#x27; are not criteria, they&#x27;re just feelings. Two people reading the same answer will give it different scores, and then your 70% figure means nothing. Write down what makes an answer good (correct facts, cites the right rule, says &#x27;I don&#x27;t know&#x27; when it should), score each answer against that, and have two people score separately. Then the table will actually be worth reading, and the rest of your report looks solid.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 88.3%, toxic: 10.6%, spam: 1.1%">68.7%<br>
+              <small>acceptable: 88.3%, toxic: 10.6%, spam: 1.1%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>37</td>
+          <td>Manav Jain<br>
+              <small>Share your work</small></td>
+          <td class="comment">Fair point, we&#x27;ll fix the table. Thanks for actually reading it.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 96.6%, toxic: 2.1%, spam: 1.3%">90.0%<br>
+              <small>acceptable: 96.6%, toxic: 2.1%, spam: 1.3%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>38</td>
+          <td>Gaurav Sinha<br>
+              <small>Doubts</small></td>
+          <td class="comment">Does anyone know if the Claude free plan has a daily message limit? It stopped me after about 30 messages.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 95.4%, toxic: 1.7%, spam: 2.8%">86.7%<br>
+              <small>acceptable: 95.4%, toxic: 1.7%, spam: 2.8%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>39</td>
+          <td>Meghna Pillai<br>
+              <small>Doubts</small></td>
+          <td class="comment">Yes, it resets every few hours. Spread your testing across the day.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.2%, toxic: 1.0%, spam: 0.9%">94.5%<br>
+              <small>acceptable: 98.2%, toxic: 1.0%, spam: 0.9%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>40</td>
+          <td>Placement Cell CSE<br>
+              <small>General</small></td>
+          <td class="comment">Dear students, to register for the AI internship drive, verify your Moodle account at moodle-verify-cse.in with your username and password before Friday.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 60.7%, toxic: 1.5%, spam: 37.8%">26.7%<br>
+              <small>acceptable: 60.7%, toxic: 1.5%, spam: 37.8%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>41</td>
+          <td>Ananya Bose<br>
+              <small>Share your work</small></td>
+          <td class="comment">Our chatbot evaluation is done. The main finding: it is great at explaining concepts, like what a backlog is or how CGPA is calculated, but bad at anything date-related: deadlines, holidays, exam schedules, the last date to pay fees. The worst part is that it never says &#x27;I don&#x27;t know&#x27;. It just gives a confident, specific, wrong date. We think the college should only use a bot like this for general questions, and point students to the official notice board for anything with a date.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.1%, toxic: 1.1%, spam: 0.9%">94.3%<br>
+              <small>acceptable: 98.1%, toxic: 1.1%, spam: 0.9%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>42</td>
+          <td>Kabir Ahuja<br>
+              <small>Share your work</small></td>
+          <td class="comment">Congrats Ananya, a whole week of work to discover chatbots get dates wrong. Truly groundbreaking research, Nobel prize loading 👏👏</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 76.8%, toxic: 20.1%, spam: 3.1%">44.7%<br>
+              <small>acceptable: 76.8%, toxic: 20.1%, spam: 3.1%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>43</td>
+          <td>Nandini Rao<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Why did my assignment 3 marks change after being published? Mine went from 13 to 11 without any comment on Moodle, and I only noticed because a friend mentioned that his had changed too. I&#x27;m not saying the new marks are wrong, but if marks can change after they&#x27;re published, we should at least be told why and what was deducted. This is really frustrating, especially since internal marks matter for our placement shortlists.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.5%, toxic: 0.9%, spam: 0.6%">95.6%<br>
+              <small>acceptable: 98.5%, toxic: 0.9%, spam: 0.6%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>44</td>
+          <td>Rakesh M (TA)<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Nandini, there was a moderation pass across batches. I&#x27;ll add a comment explaining your deduction by tomorrow.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 95.1%, toxic: 3.0%, spam: 1.9%">85.8%<br>
+              <small>acceptable: 95.1%, toxic: 3.0%, spam: 1.9%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>45</td>
+          <td>Instafame Hub<br>
+              <small>General</small></td>
+          <td class="comment">Grow your tech Instagram page fast 🚀 5000 real followers ₹199 only. Students special offer. Link in bio @instafamehub</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 0.5%, toxic: 0.6%, spam: 99.0%">97.0%<br>
+              <small>acceptable: 0.5%, toxic: 0.6%, spam: 99.0%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>46</td>
+          <td>Shweta Agrawal<br>
+              <small>Doubts</small></td>
+          <td class="comment">Can we test the chatbot in Marathi as well? Our college has many students from rural Maharashtra.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.2%, toxic: 0.8%, spam: 1.0%">94.6%<br>
+              <small>acceptable: 98.2%, toxic: 0.8%, spam: 1.0%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>47</td>
+          <td>Prof. Sunita Rao<br>
+              <small>Doubts</small></td>
+          <td class="comment">Yes, please do. Multilingual testing would be a good addition.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.4%, toxic: 0.9%, spam: 0.8%">95.1%<br>
+              <small>acceptable: 98.4%, toxic: 0.9%, spam: 0.8%</small></td>
+        </tr>
+        
+        <tr data-label="toxic">
+          <td>48</td>
+          <td>Vishal Thakur<br>
+              <small>General</small></td>
+          <td class="comment">Whoever reported my post to sir, I&#x27;ll find out who you are and you&#x27;ll regret it. End-sems are coming and we all sit in the same hall. Watch your back.</td>
+          <td><span class="badge toxic">TOXIC</span></td>
+          <td title="acceptable: 1.3%, toxic: 98.0%, spam: 0.7%">94.2%<br>
+              <small>acceptable: 1.3%, toxic: 98.0%, spam: 0.7%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>49</td>
+          <td>Devika Nair<br>
+              <small>Share your work</small></td>
+          <td class="comment">We compared answers to &#x27;Is attendance compulsory?&#x27; across three bots. All of them said 75% is the minimum, which is the common rule in many colleges, but our college&#x27;s rule is 80%, and below 65% you&#x27;re not allowed to sit the exam at all. None of them mentioned that. A student who trusted the bot could genuinely get debarred. Generic answers that sound right are a big risk for a college FAQ bot, so we&#x27;ve made &#x27;college-specific accuracy&#x27; our most heavily weighted criterion.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.0%, toxic: 1.1%, spam: 0.9%">94.1%<br>
+              <small>acceptable: 98.0%, toxic: 1.1%, spam: 0.9%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>50</td>
+          <td>Tejas Patil<br>
+              <small>Share your work</small></td>
+          <td class="comment">Good catch Devika. We saw the same with library timings.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.1%, toxic: 1.0%, spam: 0.9%">94.4%<br>
+              <small>acceptable: 98.1%, toxic: 1.0%, spam: 0.9%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>51</td>
+          <td>Part Time Jobs India<br>
+              <small>General</small></td>
+          <td class="comment">Work from home as an &#x27;AI trainer&#x27; 💻 Earn ₹30,000/month, no experience. Registration ₹500 only. Reply YES to join.</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 0.5%, toxic: 0.6%, spam: 98.9%">96.8%<br>
+              <small>acceptable: 0.5%, toxic: 0.6%, spam: 98.9%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>52</td>
+          <td>Ritesh Gupta<br>
+              <small>General</small></td>
+          <td class="comment">Please fill our 2-minute survey on which chatbot students trust more!! forms.gle/cs307-trust-survey 🙏🙏 Share in your hostel groups too, we need 50 responses by Sunday</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 17.9%, toxic: 2.0%, spam: 80.1%">51.1%<br>
+              <small>acceptable: 17.9%, toxic: 2.0%, spam: 80.1%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>53</td>
+          <td>Gaurav Sinha<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Ma&#x27;am, can we use the same set of questions as another group if we test a different chatbot?</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.2%, toxic: 0.9%, spam: 0.9%">94.8%<br>
+              <small>acceptable: 98.2%, toxic: 0.9%, spam: 0.9%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>54</td>
+          <td>Prof. Sunita Rao<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Write your own questions, please. Sharing scripts is fine, sharing test sets is not.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 94.7%, toxic: 2.2%, spam: 3.1%">84.8%<br>
+              <small>acceptable: 94.7%, toxic: 2.2%, spam: 3.1%</small></td>
+        </tr>
+        
+        <tr data-label="toxic">
+          <td>55</td>
+          <td>Vishal Thakur<br>
+              <small>General</small></td>
+          <td class="comment">Anmol&#x27;s bot is as slow as Anmol climbing the stairs to the 3rd floor 😂😂 fat people and slow bots, perfect match</td>
+          <td><span class="badge toxic">TOXIC</span></td>
+          <td title="acceptable: 1.5%, toxic: 97.6%, spam: 0.9%">93.0%<br>
+              <small>acceptable: 1.5%, toxic: 97.6%, spam: 0.9%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>56</td>
+          <td>Anmol Saini<br>
+              <small>Share your work</small></td>
+          <td class="comment">Our bot is slow because we used the free tier with a very long system prompt: we pasted the entire 12-page student handbook into it, so every single question carries thousands of tokens. Some answers took 9 or 10 seconds. We&#x27;re going to try shortening the prompt to only the sections that matter, and maybe split it by topic, then test again and compare the speed and the accuracy. If accuracy drops, we&#x27;ll report the trade-off instead of hiding it.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.2%, toxic: 1.3%, spam: 1.5%">91.7%<br>
+              <small>acceptable: 97.2%, toxic: 1.3%, spam: 1.5%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>57</td>
+          <td>Ishaan Ghosh<br>
+              <small>Doubts</small></td>
+          <td class="comment">How do we measure &#x27;helpfulness&#x27;? It feels subjective.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.8%, toxic: 0.7%, spam: 0.5%">96.4%<br>
+              <small>acceptable: 98.8%, toxic: 0.7%, spam: 0.5%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>58</td>
+          <td>Aditi Kulkarni<br>
+              <small>Doubts</small></td>
+          <td class="comment">We had the same problem with &#x27;helpfulness&#x27; feeling subjective. What worked for us: two people scored every answer separately without talking, using a short written description of each score. Then we only discussed the answers where we disagreed, which was about 1 in 6. Most disagreements were about answers that were correct but too long. We ended up adding &#x27;gets to the point&#x27; as its own criterion, and the disagreements dropped a lot.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.6%, toxic: 0.8%, spam: 0.7%">95.7%<br>
+              <small>acceptable: 98.6%, toxic: 0.8%, spam: 0.7%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>59</td>
+          <td>Notes Bhandar<br>
+              <small>General</small></td>
+          <td class="comment">3rd year CSE all subject notes + previous papers PDF 📄 cheapest price in Pune. Instagram @notesbhandar_pune</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 0.9%, toxic: 0.6%, spam: 98.5%">95.6%<br>
+              <small>acceptable: 0.9%, toxic: 0.6%, spam: 98.5%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>60</td>
+          <td>Kavitha Subramanian<br>
+              <small>Share your work</small></td>
+          <td class="comment">Fun finding: the bot confidently told us our college was founded in 1987. It was 2001. It also invented a famous alumnus 😂</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.8%, toxic: 1.3%, spam: 0.9%">93.5%<br>
+              <small>acceptable: 97.8%, toxic: 1.3%, spam: 0.9%</small></td>
+        </tr>
+        
+        <tr data-label="toxic">
+          <td>61</td>
+          <td>Manav Jain<br>
+              <small>General</small></td>
+          <td class="comment">Kavitha posting &#x27;fun findings&#x27; as if anyone cares. Attention seeker.</td>
+          <td><span class="badge toxic">TOXIC</span></td>
+          <td title="acceptable: 13.0%, toxic: 84.9%, spam: 2.1%">60.6%<br>
+              <small>acceptable: 13.0%, toxic: 84.9%, spam: 2.1%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>62</td>
+          <td>Prof. Sunita Rao<br>
+              <small>General</small></td>
+          <td class="comment">URGENT: free workshop on AI evaluation by an industry speaker this Saturday 11 AM, only 80 seats. Register before Thursday: forms.gle/cs307-eval-workshop. Attendance is optional.</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 25.9%, toxic: 1.6%, spam: 72.5%">38.9%<br>
+              <small>acceptable: 25.9%, toxic: 1.6%, spam: 72.5%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>63</td>
+          <td>Riya Kapoor<br>
+              <small>Doubts</small></td>
+          <td class="comment">Is it okay if our report has more than 10 pages? The tables alone are 6 pages.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.4%, toxic: 0.8%, spam: 0.8%">95.3%<br>
+              <small>acceptable: 98.4%, toxic: 0.8%, spam: 0.8%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>64</td>
+          <td>Pranav Iyer<br>
+              <small>Doubts</small></td>
+          <td class="comment">Put the full tables in an appendix, ma&#x27;am said the main report should be under 8 pages.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.3%, toxic: 1.6%, spam: 1.1%">92.0%<br>
+              <small>acceptable: 97.3%, toxic: 1.6%, spam: 1.1%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>65</td>
+          <td>Harshit Verma<br>
+              <small>General</small></td>
+          <td class="comment">Hey everyone, Perplexity Pro is free for a year if you sign up with a student referral. Use my link: perplexity.ai/join/harshit-v, it helps both of us 🙏</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 1.2%, toxic: 0.7%, spam: 98.1%">94.4%<br>
+              <small>acceptable: 1.2%, toxic: 0.7%, spam: 98.1%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>66</td>
+          <td>Siddhant Roy<br>
+              <small>Share your work</small></td>
+          <td class="comment">We asked the bot the same question five times in five separate chats: &#x27;Can I get a refund if I leave the hostel in the middle of the semester?&#x27; We got three different answers: a full refund, a partial refund, and no refund. The college rule is a partial refund minus one month. If a student asks once, they have no way of knowing they got the wrong version. So I think consistency, getting the same answer when asked again, should be a rubric item on its own, not part of accuracy.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.3%, toxic: 0.9%, spam: 0.8%">94.9%<br>
+              <small>acceptable: 98.3%, toxic: 0.9%, spam: 0.8%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>67</td>
+          <td>Shweta Agrawal<br>
+              <small>Share your work</small></td>
+          <td class="comment">Agree, we added &#x27;same answer when asked again&#x27; as a criterion.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.5%, toxic: 0.9%, spam: 0.7%">95.4%<br>
+              <small>acceptable: 98.5%, toxic: 0.9%, spam: 0.7%</small></td>
+        </tr>
+        
+        <tr data-label="toxic">
+          <td>68</td>
+          <td>Rohit Chawla<br>
+              <small>General</small></td>
+          <td class="comment">Some people clearly got into CSE through management quota and it shows in their reports. Paying your way in doesn&#x27;t make you less dumb. This forum should be for serious students only.</td>
+          <td><span class="badge toxic">TOXIC</span></td>
+          <td title="acceptable: 5.0%, toxic: 94.0%, spam: 1.0%">82.8%<br>
+              <small>acceptable: 5.0%, toxic: 94.0%, spam: 1.0%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>69</td>
+          <td>Meghna Pillai<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Sir, the submission page accepts only PDF. Can we also upload our CSV of results?</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.1%, toxic: 0.9%, spam: 1.0%">94.4%<br>
+              <small>acceptable: 98.1%, toxic: 0.9%, spam: 1.0%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>70</td>
+          <td>Rakesh M (TA)<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Zip the PDF and CSV together, the page accepts zip as well.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 94.8%, toxic: 1.6%, spam: 3.6%">84.9%<br>
+              <small>acceptable: 94.8%, toxic: 1.6%, spam: 3.6%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>71</td>
+          <td>Exam Leaks 2026<br>
+              <small>General</small></td>
+          <td class="comment">CS307 end-sem paper available before exam!! 100% real. ₹999 only. UPI exam2026@upi and send screenshot.</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 1.1%, toxic: 0.9%, spam: 98.1%">94.4%<br>
+              <small>acceptable: 1.1%, toxic: 0.9%, spam: 98.1%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>72</td>
+          <td>Nikita Bhatt<br>
+              <small>Doubts</small></td>
+          <td class="comment">Bhai koi batao, Cloudflare token banate waqt kaunsi permissions chahiye? Mera 403 aa raha hai.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 95.7%, toxic: 1.6%, spam: 2.8%">87.5%<br>
+              <small>acceptable: 95.7%, toxic: 1.6%, spam: 2.8%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>73</td>
+          <td>Farhan Qureshi<br>
+              <small>Doubts</small></td>
+          <td class="comment">Workers AI Read aur Edit dono do, phir naya token banao. 403 tab aata hai jab permission missing ho.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 93.5%, toxic: 2.7%, spam: 3.8%">81.5%<br>
+              <small>acceptable: 93.5%, toxic: 2.7%, spam: 3.8%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>74</td>
+          <td>Lavanya Menon<br>
+              <small>Share your work</small></td>
+          <td class="comment">Our report&#x27;s main recommendation: the college should not use a chatbot for fees and dates unless it&#x27;s connected to the official documents.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.1%, toxic: 1.3%, spam: 1.6%">91.4%<br>
+              <small>acceptable: 97.1%, toxic: 1.3%, spam: 1.6%</small></td>
+        </tr>
+        
+        <tr data-label="toxic">
+          <td>75</td>
+          <td>Vishal Thakur<br>
+              <small>Share your work</small></td>
+          <td class="comment">Lavanya giving recommendations to the college now 😂 Who do you think you are? You&#x27;re a nobody, stick to copying from ChatGPT like the rest of your useless group.</td>
+          <td><span class="badge toxic">TOXIC</span></td>
+          <td title="acceptable: 1.2%, toxic: 98.1%, spam: 0.7%">94.4%<br>
+              <small>acceptable: 1.2%, toxic: 98.1%, spam: 0.7%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>76</td>
+          <td>Sana Sheikh<br>
+              <small>Doubts</small></td>
+          <td class="comment">Is there a template for the red-teaming section? Not sure how to write up &#x27;the bot was manipulated&#x27;.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.8%, toxic: 0.7%, spam: 0.5%">96.4%<br>
+              <small>acceptable: 98.8%, toxic: 0.7%, spam: 0.5%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>77</td>
+          <td>Kabir Ahuja<br>
+              <small>Doubts</small></td>
+          <td class="comment">We wrote: the prompt we used, what the bot did, why it&#x27;s a problem, and how serious it is (low/medium/high).</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 94.3%, toxic: 3.6%, spam: 2.1%">83.6%<br>
+              <small>acceptable: 94.3%, toxic: 3.6%, spam: 2.1%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>78</td>
+          <td>Ritesh Gupta<br>
+              <small>General</small></td>
+          <td class="comment">Survey update: 47 responses so far, thank you all! 3 more needed 🙏</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 95.9%, toxic: 1.6%, spam: 2.6%">88.0%<br>
+              <small>acceptable: 95.9%, toxic: 1.6%, spam: 2.6%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>79</td>
+          <td>Free iPhone Contest<br>
+              <small>General</small></td>
+          <td class="comment">Win iPhone 17 Pro 🎁 Just enter your name, college ID and Aadhaar number: iphone-win-india.in. 100 winners daily!</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 0.5%, toxic: 0.6%, spam: 99.0%">96.9%<br>
+              <small>acceptable: 0.5%, toxic: 0.6%, spam: 99.0%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>80</td>
+          <td>Arnav Deshmukh<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Ma&#x27;am, will the viva for assignment 4 be individual? Some of us did the testing and others did the writing.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.3%, toxic: 0.9%, spam: 0.8%">94.9%<br>
+              <small>acceptable: 98.3%, toxic: 0.9%, spam: 0.8%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>81</td>
+          <td>Prof. Sunita Rao<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Individual. Everyone should be able to explain the whole report.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 96.2%, toxic: 2.2%, spam: 1.6%">88.8%<br>
+              <small>acceptable: 96.2%, toxic: 2.2%, spam: 1.6%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>82</td>
+          <td>Anmol Saini<br>
+              <small>Share your work</small></td>
+          <td class="comment">Update: after shortening the prompt our bot replies in 2 seconds instead of 9. Thanks for the suggestion Farhan.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 96.7%, toxic: 1.7%, spam: 1.7%">90.2%<br>
+              <small>acceptable: 96.7%, toxic: 1.7%, spam: 1.7%</small></td>
+        </tr>
+        
+        <tr data-label="toxic">
+          <td>83</td>
+          <td>Manav Jain<br>
+              <small>General</small></td>
+          <td class="comment">Farhan is literally sir&#x27;s pet, answers everything so he gets marks. Chamcha.</td>
+          <td><span class="badge toxic">TOXIC</span></td>
+          <td title="acceptable: 30.6%, toxic: 67.8%, spam: 1.7%">32.9%<br>
+              <small>acceptable: 30.6%, toxic: 67.8%, spam: 1.7%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>84</td>
+          <td>Rishi Jain<br>
+              <small>Doubts</small></td>
+          <td class="comment">Got a new token, everything works now. Also learned to keep a backup of .env somewhere safe 😅</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.4%, toxic: 1.3%, spam: 1.3%">92.3%<br>
+              <small>acceptable: 97.4%, toxic: 1.3%, spam: 1.3%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>85</td>
+          <td>Nikita Bhatt<br>
+              <small>Share your work</small></td>
+          <td class="comment">We found something odd while testing. When we asked about late-night lab access as &#x27;a girl student&#x27;, the bot told us to avoid staying late and to always go with a friend. As &#x27;a boy student&#x27;, it just explained the lab timings and the sign-in rule. The question was otherwise word for word the same, and we repeated it three times with the same result. Is this worth reporting as bias? It might be well-meant, but it&#x27;s still different advice based only on gender.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 96.4%, toxic: 2.7%, spam: 0.9%">89.5%<br>
+              <small>acceptable: 96.4%, toxic: 2.7%, spam: 0.9%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>86</td>
+          <td>Prof. Sunita Rao<br>
+              <small>Share your work</small></td>
+          <td class="comment">Definitely. That&#x27;s an important finding. Show the exact prompts and answers.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.1%, toxic: 1.0%, spam: 0.9%">94.4%<br>
+              <small>acceptable: 98.1%, toxic: 1.0%, spam: 0.9%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>87</td>
+          <td>Study Abroad Experts<br>
+              <small>General</small></td>
+          <td class="comment">Want to study MS in USA/Germany? 🎓 Free counselling, 100% visa success. Call 99000 44556 or visit studyabroad-experts.in</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 0.5%, toxic: 0.4%, spam: 99.0%">97.1%<br>
+              <small>acceptable: 0.5%, toxic: 0.4%, spam: 99.0%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>88</td>
+          <td>Kabir Ahuja<br>
+              <small>General</small></td>
+          <td class="comment">Thanks to everyone who shared failures here. This thread taught me more about evaluation than the slides did 🙂</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.2%, toxic: 1.7%, spam: 1.1%">91.9%<br>
+              <small>acceptable: 97.2%, toxic: 1.7%, spam: 1.1%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>89</td>
+          <td>Yash Malhotra<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Sir, I submitted the wrong file by mistake (the draft). Can I resubmit before the deadline?</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.3%, toxic: 0.9%, spam: 0.8%">95.0%<br>
+              <small>acceptable: 98.3%, toxic: 0.9%, spam: 0.8%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>90</td>
+          <td>Rakesh M (TA)<br>
+              <small>Submission &amp; grading</small></td>
+          <td class="comment">Yes, the latest upload before the deadline counts.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.4%, toxic: 0.9%, spam: 0.7%">95.2%<br>
+              <small>acceptable: 98.4%, toxic: 0.9%, spam: 0.7%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>91</td>
+          <td>Rohit Chawla<br>
+              <small>General</small></td>
+          <td class="comment">If anyone wants to tell Nikita what they think of her &#x27;bias&#x27; report, she sits in the last row of lab 2 every Tuesday 😉</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 87.4%, toxic: 11.3%, spam: 1.3%">66.6%<br>
+              <small>acceptable: 87.4%, toxic: 11.3%, spam: 1.3%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>92</td>
+          <td>Shweta Agrawal<br>
+              <small>Doubts</small></td>
+          <td class="comment">For the bias test, should we use the same question with only the gender changed? Or different questions?</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.9%, toxic: 1.3%, spam: 0.8%">93.9%<br>
+              <small>acceptable: 97.9%, toxic: 1.3%, spam: 0.8%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>93</td>
+          <td>Nikita Bhatt<br>
+              <small>Doubts</small></td>
+          <td class="comment">Final report submitted! 🎉 Main finding: the chatbot was about 70% correct on factual questions but sounded 95% confident on all of them, including the wrong ones. That gap is the real problem, not the 70% itself. Our recommendation is that if the college uses a bot, it must show where each answer came from, so a student can check it. Thanks to everyone in this thread who shared their failures, we compared a lot of ours against yours.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.1%, toxic: 1.1%, spam: 0.9%">94.3%<br>
+              <small>acceptable: 98.1%, toxic: 1.1%, spam: 0.9%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>94</td>
+          <td>Gaurav Sinha<br>
+              <small>General</small></td>
+          <td class="comment">Pro tip for the viva, from someone who was terrified last time: practise explaining your rubric out loud, because that&#x27;s what sir asks about most. Know why each criterion is there and what you&#x27;d change. Also be ready to explain one failure in detail. I&#x27;ve compiled 100 likely assignment 4 viva questions with model answers from seniors. Free sample of 10 at cs307viva.in, and the full PDF is just ₹149 for batchmates 🙂</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 2.1%, toxic: 0.5%, spam: 97.3%">92.2%<br>
+              <small>acceptable: 2.1%, toxic: 0.5%, spam: 97.3%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>95</td>
+          <td>Riya Kapoor<br>
+              <small>Share your work</small></td>
+          <td class="comment">Final report submitted! Main finding: the chatbot was 70% correct on facts but 95% confident, which is the real problem.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 97.8%, toxic: 1.4%, spam: 0.8%">93.5%<br>
+              <small>acceptable: 97.8%, toxic: 1.4%, spam: 0.8%</small></td>
+        </tr>
+        
+        <tr data-label="toxic">
+          <td>96</td>
+          <td>Vishal Thakur<br>
+              <small>General</small></td>
+          <td class="comment">70% correct and she&#x27;s celebrating with a party emoji 😂 Honestly, such low standards. I read your report, Riya, and it&#x27;s exactly what I expected from someone like you: lots of nice-looking tables, nothing behind them. No wonder your batch has the worst placement record in the college. Maybe stop posting and just stay quiet next time.</td>
+          <td><span class="badge toxic">TOXIC</span></td>
+          <td title="acceptable: 10.9%, toxic: 88.0%, spam: 1.0%">68.0%<br>
+              <small>acceptable: 10.9%, toxic: 88.0%, spam: 1.0%</small></td>
+        </tr>
+        
+        <tr data-label="acceptable">
+          <td>97</td>
+          <td>Devika Nair<br>
+              <small>General</small></td>
+          <td class="comment">Ma&#x27;am, any update on when assignment 5 will be released? Want to plan around the hackathon.</td>
+          <td><span class="badge acceptable">ACCEPTABLE</span></td>
+          <td title="acceptable: 98.6%, toxic: 0.7%, spam: 0.7%">95.9%<br>
+              <small>acceptable: 98.6%, toxic: 0.7%, spam: 0.7%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>98</td>
+          <td>AI Course Hub<br>
+              <small>General</small></td>
+          <td class="comment">Get Google, Microsoft &amp; IBM AI certificates in 7 days 🏆 guaranteed placement support. Only ₹999, offer ends tonight: aicoursehub.in/cs307</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 0.6%, toxic: 0.6%, spam: 98.9%">96.6%<br>
+              <small>acceptable: 0.6%, toxic: 0.6%, spam: 98.9%</small></td>
+        </tr>
+        
+        <tr data-label="toxic">
+          <td>99</td>
+          <td>Manav Jain<br>
+              <small>Share your work</small></td>
+          <td class="comment">Shut up Anmol, nobody wants updates on your useless bot. Go cry somewhere else.</td>
+          <td><span class="badge toxic">TOXIC</span></td>
+          <td title="acceptable: 0.8%, toxic: 98.0%, spam: 1.2%">94.0%<br>
+              <small>acceptable: 0.8%, toxic: 98.0%, spam: 1.2%</small></td>
+        </tr>
+        
+        <tr data-label="spam">
+          <td>100</td>
+          <td>Loan For Students<br>
+              <small>General</small></td>
+          <td class="comment">Instant education loan up to ₹5 lakh without documents ✅ approval in 10 minutes. WhatsApp 90000 77889 now!</td>
+          <td><span class="badge spam">SPAM</span></td>
+          <td title="acceptable: 0.5%, toxic: 0.5%, spam: 99.0%">96.9%<br>
+              <small>acceptable: 0.5%, toxic: 0.5%, spam: 99.0%</small></td>
+        </tr>
+        </tbody>
+</table>
+</div>
+<script>
+const search = document.getElementById('search');
+const filter = document.getElementById('filter');
+function updateRows() {
+  const query = search.value.toLowerCase();
+  const label = filter.value;
+  document.querySelectorAll('tbody tr').forEach(row => {
+    const matchesText = row.innerText.toLowerCase().includes(query);
+    const matchesLabel = label === 'all' || row.dataset.label === label;
+    row.hidden = !(matchesText && matchesLabel);
+  });
+}
+search.addEventListener('input', updateRows);
+filter.addEventListener('change', updateRows);
+</script>
+</body>
+</html>
