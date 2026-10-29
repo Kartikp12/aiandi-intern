@@ -9,11 +9,11 @@ from datetime import datetime
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
-INPUT_FILE = BASE_DIR / "comments.json"
-OUTPUT_FILE = BASE_DIR / "report.html"
+INPUT_FILE = BASE_DIR / "comments-v2.json"
+OUTPUT_FILE = BASE_DIR / "results-v2.html"
 CREDENTIALS_FILE = BASE_DIR / "cloud-flare.local.sh"
 
-MODEL = "clef-flash"
+MODEL = "clef"
 VALID_LABELS = {"acceptable", "toxic", "spam"}
 MAX_RETRIES = 3
 
