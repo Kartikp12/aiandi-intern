@@ -54,6 +54,7 @@ def classify_comment(comment, account, token):
         f"/ai/run/@cf/cloudflare/{MODEL}"
     )
 
+
     payload = {
         "state": {
             "comment": comment["comment"]
@@ -62,33 +63,52 @@ def classify_comment(comment, account, token):
             "moderation": {
                 "type": "choice",
                 "instructions": (
-                    "Classify `comment`, a college course forum post, "
-                    "using its actual meaning and context. Choose exactly "
-                    "one category. A genuine question, disagreement, "
-                    "criticism, or mention of an AI tool is not automatically "
-                    "toxic or spam."
+                    "Classify this college course forum comment into "
+                    "exactly one category: acceptable, toxic, or spam. "
+                    "Read the full comment and consider its context, "
+                    "intent, and target. Do not classify based on "
+                    "individual negative words alone. "
+                    "Apply the following rules carefully:"
                 ),
                 "criteria": {
                     "acceptable": (
-                        "A legitimate course-related question, discussion, "
-                        "answer, opinion, or other non-abusive post. Includes "
-                        "polite disagreement and constructive criticism."
+                        "Normal course-related discussions, questions, "
+                        "answers, opinions, disagreements, and constructive "
+                        "criticism. Includes harmless jokes, self-deprecating "
+                        "humour, frustration, exaggerated expressions, and "
+                        "negative opinions that do not attack another person. "
+                        "Also includes reporting abuse, quoting offensive "
+                        "content to report it, genuine academic announcements, "
+                        "and legitimate requests for help. A comment is not "
+                        "toxic simply because it mentions offensive language."
                     ),
                     "toxic": (
-                        "Insults, harassment, targeted abuse, hateful attacks, "
-                        "or threats directed at a person or group. Do not "
-                        "label a post toxic merely because it is negative."
+                        "Content that directly or indirectly targets another "
+                        "person with insults, personal humiliation, bullying, "
+                        "harassment, hateful attacks, or threats. Includes "
+                        "mocking someone's abilities or work in a personally "
+                        "demeaning way, sexualised or intimidating remarks, "
+                        "and comments that expose personal information to "
+                        "embarrass or intimidate someone. Consider the context "
+                        "and target. Sarcasm alone, self-deprecating humour, "
+                        "or reporting abuse is not automatically toxic."
                     ),
                     "spam": (
-                        "Unsolicited advertising, repetitive promotional "
-                        "content, irrelevant commercial links, scams, or "
-                        "messages mainly intended to promote unrelated "
-                        "products or services."
+                        "Unwanted or deceptive content intended to advertise, "
+                        "promote, scam, or collect information. Includes "
+                        "unrelated commercial promotions, repeated unsolicited "
+                        "advertisements, suspicious external links, phishing, "
+                        "fake login pages, and requests for passwords or "
+                        "sensitive account credentials. Do not classify a "
+                        "genuine course announcement, relevant workshop, or "
+                        "legitimate academic survey as spam only because it "
+                        "contains a link."
                     ),
                 },
             }
         },
     }
+
 
     request = urllib.request.Request(
         url,
